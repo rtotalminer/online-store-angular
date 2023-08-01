@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { UserModule } from './components/user/user.module';
+import { UserModule } from '../modules/user/user.module';
+import { AppModule } from '../app.module';
 
 
 

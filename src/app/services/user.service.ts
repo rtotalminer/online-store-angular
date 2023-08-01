@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/data/models/user.model';
 import { environment } from 'src/config/enviroment';
+import { StoreService } from './store.service';
+import { data } from 'src/config/data';
 
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +16,7 @@ export class UserService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
     ) {
         this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();

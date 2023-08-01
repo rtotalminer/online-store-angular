@@ -5,7 +5,7 @@
         </a>
         <span class="example-spacer"></span>
         
-        <div *ngIf="isLoggedOn; else displayButtons">
+        <div *ngIf="getUser(); else displayButtons">
             <a href="#"><mat-icon>shopping cart</mat-icon></a>
         </div>
 
