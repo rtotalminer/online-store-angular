@@ -1,13 +1,35 @@
+$orangeColor: #FF9C00;
+
 .example-spacer {
     flex: 1 1 auto;
 }
 
 header mat-toolbar {
-    padding-left: 10em;
-    padding-right: 10em;
+    padding: 0 10em;
+    background: #fff !important;
+    border-bottom: 1px solid #d9d9d9;
 }
 
 header button {
-    margin-left: 2em
+    margin-left: 2em;
+    border-radius: 8em;
+    padding: 9px 20px;
+}
+
+.mdc-button:not(:last-child) {
+    background: $orangeColor;
+    color: white;
+    border: none;
+}
+
+.mdc-button:last-child {
+    background: inherit !important;
+    border: 1px solid $orangeColor;
+    color: $orangeColor;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
   
