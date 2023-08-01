@@ -1,6 +1,8 @@
 <header class="header_desktop">
     <mat-toolbar>
-        <span>My App</span>
+        <a [routerLink]="['/']">
+            <img src="../assets/logos/storeLogo.png" alt="">
+        </a>
         <span class="example-spacer"></span>
         
         <div *ngIf="isLoggedOn; else displayButtons">
@@ -9,7 +11,7 @@
 
         <ng-template #displayButtons>
             <button [routerLink]="['register']" mat-raised-button >Sign up</button>
-            <button [routerLink]="['login']" mat-raised-button><a   ariaCurrentWhenActive="page">Log in</a></button>
+            <button [routerLink]="['login']" mat-raised-button>Login</button>
         </ng-template>
 
     </mat-toolbar>

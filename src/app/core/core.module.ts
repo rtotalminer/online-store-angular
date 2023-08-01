@@ -11,9 +11,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
