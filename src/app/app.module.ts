@@ -10,9 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { fakeBackendProvider } from 'src/helpers/fake-backend';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
