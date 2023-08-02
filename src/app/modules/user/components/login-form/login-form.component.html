@@ -6,25 +6,25 @@
             <h6 class="justify-content-center d-flex pt-4">Sign in with your email address and password</h6>
         </div>
         <div class="card-body pt-3">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <form>
                 <div class="mb-3">
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <input type="text" class="form-control" #emailInput/>
+                    <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                         <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="mb-3">
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <input type="password" class="form-control" #passwordInput/>
+                    <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="flex ">
                     <a class="float-right" [routerLink]="['forgotPassword']" class="btn btn-link">Forgot password?</a>
                 </div>
                 <div class="container">
                     <div class="row">
-                        <button [disabled]="loading" class="btn btn-primary">
+                        <button (click)="onLogin(emailInput.value, passwordInput.value)" [disabled]="loading" class="btn btn-primary">
                             <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                             Login
                         </button>
