@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 import { data } from 'src/config/data';
 
 @Component({
@@ -13,14 +14,14 @@ export class HeaderComponent {
 
   constructor
   (
-    private storeService: StoreService,
+   private userService: UserService
   )
   {
   
   }
 
   getUser() {
-    this.isUserLogged = this.storeService.getData(data.USER_STORE_SERVICE_STRING);
+    this.userService.getUser()
   }
 
 

@@ -11,14 +11,5 @@ import { data } from 'src/config/data';
 })
 
 export class AppComponent {
-  title = 'online-store';
-
-  constructor(
-      private storeService: StoreService,
-      private userService: UserService
-    )
-    {
-      this.userService.user.subscribe(x => storeService.addData(data.USER_STORE_SERVICE_STRING, x));
-    }
-
+  
 }

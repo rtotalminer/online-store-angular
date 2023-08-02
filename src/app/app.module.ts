@@ -6,9 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { fakeBackendProvider } from 'src/helpers/fake-backend';
-import { JwtInterceptor } from 'src/helpers/jwt-interceptor';
-import { ErrorInterceptor } from 'src/helpers/error-interceptor';
+// firebase
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+
+//environment
+import { environment } from 'src/environments/environment';
+
 
 
 @NgModule({
@@ -20,13 +24,10 @@ import { ErrorInterceptor } from 'src/helpers/error-interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    fakeBackendProvider,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
