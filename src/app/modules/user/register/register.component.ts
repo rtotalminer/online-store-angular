@@ -14,6 +14,6 @@ export class RegisterComponent {
   ) {}
 
   onSubmit(email: string, password: string) {
-    this.firebaseService.signUp(email, password)
+    this.firebaseService.signUp({email, password})
   }
 }

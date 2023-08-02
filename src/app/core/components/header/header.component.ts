@@ -20,5 +20,10 @@ export class HeaderComponent implements OnInit {
     this.user = this.firebaseService.getUserState()
   }
 
+
+  onLogout() {
+    this.firebaseService.logout()
+    this.user = null
+  }
 }
 
