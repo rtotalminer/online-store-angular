@@ -5,7 +5,12 @@ import {
     signOut ,
     signInWithEmailAndPassword
 } from '@angular/fire/auth';
+
 import { IAuth } from '../core/interfaces/auth.interface';
+import { IHttpError } from '../core/interfaces/http-error.interface';
+
+
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
@@ -16,7 +21,6 @@ export class FirebaseService {
     constructor(
         
     ) {
-        
     }
 
     signUp({email, password}: IAuth) {
@@ -35,10 +39,12 @@ export class FirebaseService {
         signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
             console.log(userCredential)
+            return [userCredential];
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+            const errorCode : number = error.code;
+            const errorMessage : string = error.message;
+            return errorMessage;
   });
     }
 
