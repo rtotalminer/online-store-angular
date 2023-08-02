@@ -1,29 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { StoreService } from 'src/app/services/store.service';
-import { UserService } from 'src/app/services/user.service';
-import { data } from 'src/config/data';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
-  isUserLogged = false
+export class HeaderComponent implements OnInit {
+  user: any
 
   constructor
   (
-   private userService: UserService
+   private firebaseService: FirebaseService
   )
-  {
-  
-  }
+  {}
 
-  getUser() {
-    this.userService.getUser()
+  ngOnInit(): void {
+    this.user = this.firebaseService.getUserState()
   }
-
 
 }
 

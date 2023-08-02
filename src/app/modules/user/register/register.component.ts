@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +10,10 @@ export class RegisterComponent {
 
 
   constructor(
-    private userService: UserService
+    private firebaseService: FirebaseService
   ) {}
 
   onSubmit(email: string, password: string) {
-    this.userService.signUp(email, password)
+    this.firebaseService.signUp(email, password)
   }
 }

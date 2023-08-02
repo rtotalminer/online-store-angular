@@ -4,17 +4,13 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 @Injectable({ providedIn: 'root' })
 
 
-export class UserService {
+export class FirebaseService {
     private auth: Auth = inject(Auth)
 
     constructor(
         
     ) {
         
-    }
-
-    getUser() {
-        console.log(this.auth)
     }
 
     signUp(email: string, password: string) {
@@ -29,5 +25,9 @@ export class UserService {
             const errorMessage = error.message;
             // ..
         });
+    }
+
+    getUserState() {
+        return this.auth
     }
 }
