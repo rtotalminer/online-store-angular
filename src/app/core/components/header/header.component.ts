@@ -9,6 +9,8 @@ import { data } from 'src/config/data';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  isUserLogged = false
+
   constructor
   (
     private storeService: StoreService,
@@ -18,7 +20,7 @@ export class HeaderComponent {
   }
 
   getUser() {
-    return this.storeService.getData(data.USER_STORE_SERVICE_STRING);
+    this.isUserLogged = this.storeService.getData(data.USER_STORE_SERVICE_STRING);
   }
 
 

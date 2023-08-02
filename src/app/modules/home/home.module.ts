@@ -10,13 +10,23 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeRoutingModule } from './home-routing.module';
+import { MainComponent } from './components/main/main.component';
+import { AboutComponent } from './components/about/about.component';
+import { ShopOnlineComponent } from './components/shop-online/shop-online.component';
+import { WhatsNewComponent } from './components/whats-new/whats-new.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
     declarations: [
         HomeComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        MainComponent,
+        AboutComponent,
+        ShopOnlineComponent,
+        WhatsNewComponent,
+        ContactComponent
     ],
     imports: [
         CommonModule,
