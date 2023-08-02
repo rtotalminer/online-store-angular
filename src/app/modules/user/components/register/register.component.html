@@ -1,0 +1,14 @@
+<div class="container">
+    <form >
+        <label for="name">Email:</label>
+        <input type="text" id="name" #emailInput>
+    
+        <label for="password">Password:</label>
+        <input type="text" id="email" #passwordInput>
+    
+        <button type="button" (click)="onSubmit(emailInput.value, passwordInput.value)">Submit</button>
+    </form>
+
+    <img src="../assets/images/signInBg.jpg" alt="">
+    
+</div>
