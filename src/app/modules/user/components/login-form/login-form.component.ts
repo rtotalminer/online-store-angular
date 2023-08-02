@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { LoginPageComponent } from '../login-page/login.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { IAuth } from 'src/app/core/interfaces/auth.interface';
 import { IHttpError } from 'src/app/core/interfaces/http-error.interface';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
 @Component({
@@ -20,6 +21,8 @@ import { IHttpError } from 'src/app/core/interfaces/http-error.interface';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent {
+
+  private auth: Auth = inject(Auth);
 
   form!: FormGroup;
   loading = false;
@@ -90,20 +93,24 @@ export class LoginFormComponent {
 
     this.loading = true;
 
-    let res = this.firebaseService.signIn({email, password});
+    signInWithEmailAndPassword(this.auth, email, password)
+        .then((userCredential) => {
+            this.onSuccess()
+        })
+        .catch((error) => {
+            this.onError(error);
+        });
+  }
 
+  private onSuccess() {
     this.loading = false;
+    this.router.navigateByUrl('/');
 
-    console.log(res);
+  }
 
-    // if (res[0] == "error") {
-    //     this.loading = false;
-    //     this.error = res[2];
-    // }
-    // else {
-    //     // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    //     this.router.navigateByUrl("/");
-    // }
+  private onError(error : any) {
+    this.loading = false;
+    console.log(error);
   }
 
   forgotPassword() {
