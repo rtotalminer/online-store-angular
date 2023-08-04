@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { LoginPageComponent } from '../login-page/login.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,18 +15,55 @@ export class ForgotPasswordComponent {
   public otp = "";
   public showOtpComponent = true; 
 
+  error?: string;
 
-  @ViewChild("ngOtpInput", { static: false }) ngOtpInput: any; config = { allowNumbersOnly: true, length: 4, isPasswordInput: false, disableAutoFocus: false, placeholder: "*", inputStyles: { width: "50px", height: "50px", }, }; 
+  formEmail!: FormGroup;
+  submittedEmail = false;
+  
+  formOTP!: FormGroup;
+
+  @ViewChild("ngOtpInput", { static: false }) ngOtpInput: any;
+  config = {
+    allowNumbersOnly: true,
+    length: 5,
+    isPasswordInput: false,
+    disableAutoFocus: false,
+    placeholder: "*",
+    inputStyles: { width: "50px", height: "50px", }
+  }; 
 
 
-  constructor(private loginPage: LoginPageComponent){
+  constructor(
+    private loginPage: LoginPageComponent,
+    private formBuilder: FormBuilder,
+    ){
+  }
+
+  ngOnInit() {
+    this.formEmail = this.formBuilder.group({
+      email: ['', Validators.required]
+    });
+    this.formOTP = this.formBuilder.group({
+      OTP: ['', Validators.required]
+    });
   }
 
   return() {
     this.loginPage.forgetPassword = false;
   }
 
-  verify() {
+  public verifyEmail() {
+    this.submittedEmail = true;
+
+    console.log(this.submittedEmail);
+    console.log(this.formEmail.controls.email.errors)
+
+    if (this.formEmail.invalid) {
+      return;
+    }
+
+
+
     // do logic to API etc. etc.
     this.verifying = true;
   }

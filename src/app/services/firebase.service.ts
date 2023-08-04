@@ -3,30 +3,27 @@ import {
     Auth, 
     createUserWithEmailAndPassword , 
     signOut ,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    user
 } from '@angular/fire/auth';
 
 import { IAuth } from '../core/interfaces/auth.interface';
 import { IHttpError } from '../core/interfaces/http-error.interface';
 
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../data/models/user.model';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
 
 export class FirebaseService {
     private auth: Auth = inject(Auth);
-
-    private userSubject: BehaviorSubject<User | null>;
-    public user: Observable<User | null>;
     
+    public user$ = user(this.auth);
+
     constructor(
         
     ) {
-        this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
-        this.user = this.userSubject.asObservable();
     }
 
     signUp({email, password}: IAuth) {
@@ -44,12 +41,10 @@ export class FirebaseService {
     signIn({email, password}: IAuth) {
         signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
-            console.log("THEN RAN");
             console.log(userCredential)
             return [userCredential];
         })
         .catch((error) => {
-            console.log("ERR RAN");
             const errorCode : number = error.code;
             const errorMessage : string = error.message;
             return errorMessage;
