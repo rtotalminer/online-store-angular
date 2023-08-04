@@ -26,9 +26,23 @@
         </nav>
 
         <div *ngIf="userState">
-            <a href="#"><mat-icon>shopping cart</mat-icon></a>
+            <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+                </mat-menu>
+            <a href="#"><mat-icon class="menuSize">menu</mat-icon></a>
 
-            <span (click)="onLogout()">Log out</span>
+            <span (click)="onLogout()">Log out</span> -->
+
+            <a href="#menu"><mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon></a>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Cart</button>
+                <button (click)="onLogout()" mat-menu-item>Log Out</button>
+            </mat-menu>
+
+
+
         </div>
 
 

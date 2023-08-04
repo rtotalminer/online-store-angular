@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/data/models/user.model';
+import { UserModel } from 'src/app/data/models/user.model';
 import { environment } from 'src/config/enviroment';
 import { StoreService } from './store.service';
 import { data } from 'src/config/data';
@@ -11,8 +11,8 @@ import { data } from 'src/config/data';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private userSubject: BehaviorSubject<User | null>;
-    public user: Observable<User | null>;
+    private userSubject: BehaviorSubject<UserModel | null>;
+    public user: Observable<UserModel | null>;
 
     constructor(
         private router: Router,
@@ -27,7 +27,7 @@ export class UserService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<UserModel>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));

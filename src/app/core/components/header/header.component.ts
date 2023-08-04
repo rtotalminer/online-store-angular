@@ -15,8 +15,6 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 
 export class HeaderComponent implements OnDestroy {
-  private auth  = inject(Auth)
-  private user$ = user(this.auth)
   private userSubscribtion: Subscription
 
   public userState: User | null
@@ -27,7 +25,7 @@ export class HeaderComponent implements OnDestroy {
    private firebaseService: FirebaseService
   )
   {
-    this.userSubscribtion = this.user$.subscribe((aUser: User | null) => {
+    this.userSubscribtion = this.firebaseService.user$.subscribe((aUser: User | null) => {
       this.userState = aUser
     })
   }
