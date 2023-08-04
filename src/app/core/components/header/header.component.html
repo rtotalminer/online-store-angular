@@ -1,4 +1,4 @@
-<header class="header_desktop">
+<header class="header_desktop" >
     <mat-toolbar>
         <a [routerLink]="['/']">
             <img src="../assets/logos/storeLogo.png" alt="">
@@ -25,14 +25,14 @@
             </ul>
         </nav>
 
-        <div *ngIf="user">
+        <div *ngIf="userState">
             <a href="#"><mat-icon>shopping cart</mat-icon></a>
 
             <span (click)="onLogout()">Log out</span>
         </div>
 
 
-       <div *ngIf="!user">
+       <div *ngIf="!userState">
             <button [routerLink]="['register']" mat-raised-button >Sign up</button>
             <button [routerLink]="['login']" mat-raised-button>Login</button>
        </div>

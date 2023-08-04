@@ -1,0 +1,26 @@
+$borderRadius: 20px;
+
+.div-rel {
+    position: relative;
+
+    input {
+        border-radius: $borderRadius;
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 9px 19px;
+        color: white;
+    }
+
+    button {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        border: none;
+        border-radius: $borderRadius;
+        padding: 5px 18px;
+        background: #FF9C00;
+        color: white;
+    }
+}
+

@@ -6,12 +6,15 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { UserModule } from '../modules/user/user.module';
 import { AppModule } from '../app.module';
+import { InputSearchComponent } from './components/input-search/input-search.component';
 
 
 
 @NgModule({
   declarations: [
    
+  
+    InputSearchComponent
   ],
   imports: [
     CommonModule,

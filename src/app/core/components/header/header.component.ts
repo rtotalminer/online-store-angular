@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, 
+         inject, 
+         OnDestroy
+} from '@angular/core';
+
+import { Auth, User, user } from '@angular/fire/auth';
+import { Subscription } from 'rxjs';
 
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -7,23 +13,31 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  user: any
+
+export class HeaderComponent implements OnDestroy {
+  private auth  = inject(Auth)
+  private user$ = user(this.auth)
+  private userSubscribtion: Subscription
+
+  public userState: User | null
+  public loadCompleated: boolean = false
 
   constructor
   (
    private firebaseService: FirebaseService
   )
-  {}
-
-  ngOnInit(): void {
-    this.user = this.firebaseService.getUserState()
+  {
+    this.userSubscribtion = this.user$.subscribe((aUser: User | null) => {
+      this.userState = aUser
+    })
   }
 
+  ngOnDestroy(): void {
+    this.userSubscribtion.unsubscribe()
+  }
 
   onLogout() {
     this.firebaseService.logout()
-    this.user = null
   }
 }
 
