@@ -1,0 +1,10 @@
+<div class="card-item" 
+    [ngStyle]="{'background': card.backgroundColor, 
+                'background-image': card.backgroundColor === null ? 'url({{card.img}})' : '' }"
+    [ngClass]="!card.backgroundColor ? 'card-item-img' : ''"
+>
+    <div class="info">
+        <span>{{card.title}}</span>
+        <img src="{{card.img}}" alt="" *ngIf="card.backgroundColor !== null">
+    </div>
+</div>
