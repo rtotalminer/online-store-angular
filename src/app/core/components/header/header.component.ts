@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Auth, User, user } from '@angular/fire/auth';
+import { Observable, Subscription } from 'rxjs'
 
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -7,23 +9,29 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  user: any
+
+export class HeaderComponent {
+  private auth: Auth = inject(Auth);
+  userState: any
+  user$ = user(this.auth)
+  userSubscription: Subscription
 
   constructor
   (
    private firebaseService: FirebaseService
   )
-  {}
-
-  ngOnInit(): void {
-    this.user = this.firebaseService.getUserState()
+  {
+    this.userSubscription = this.user$.subscribe((aUser: User | null) => {
+      this.userState = aUser
+    })
   }
-
 
   onLogout() {
     this.firebaseService.logout()
-    this.user = null
+  }
+
+  onConsole() {
+    console.log(this.userState)
   }
 }
 
