@@ -4,5 +4,19 @@
     text-align: center;
     color: white;
     background: gray;
+}
 
+.categories-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info {
+    margin: 28px 0;
+
+    h1 {
+        margin-bottom: 20px;
+    }
 }

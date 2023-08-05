@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { categoriesCard } from 'src/app/core/constants/categoriesCard';
+import { ICategoriesCard } from 'src/app/core/interfaces/categoriesCard.interface';
 
 @Component({
   selector: 'app-main',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-
+    public topCategoriesCards: ICategoriesCard[] = categoriesCard
 }

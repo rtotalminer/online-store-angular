@@ -2,3 +2,14 @@
     <!-- <img src="../assets/images/banner.jpg" alt=""> -->
     <h2>Banner</h2>
 </div>
+
+<div class="info">
+    <h1>Shop our top Categories</h1>
+    
+    <div class="categories-cards">
+        <app-top-categorie-card 
+            *ngFor="let card of topCategoriesCards"
+            [card]="card"
+        ></app-top-categorie-card>
+    </div>
+</div>
