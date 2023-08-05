@@ -35,5 +35,10 @@ $online-store-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/inter/Inter-Thin.ttf) format("opentype");
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
