@@ -113,8 +113,4 @@ export class LoginFormComponent {
     console.log(error);
   }
 
-  forgotPassword() {
-    this.loginPage.forgetPassword = true;
-  }
-
 }

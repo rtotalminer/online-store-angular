@@ -15,6 +15,9 @@ import { AboutComponent } from './components/about/about.component';
 import { ShopOnlineComponent } from './components/shop-online/shop-online.component';
 import { WhatsNewComponent } from './components/whats-new/whats-new.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { InputSearchComponent } from 'src/app/core/components/input-search/input-search.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { ContactComponent } from './components/contact/contact.component';
         AboutComponent,
         ShopOnlineComponent,
         WhatsNewComponent,
-        ContactComponent
+        ContactComponent,
+        InputSearchComponent
     ],
     imports: [
         CommonModule,
@@ -36,6 +40,11 @@ import { ContactComponent } from './components/contact/contact.component';
         MatButtonModule,
         MatToolbarModule,
         MatDialogModule,
+        MatCardModule,
+
+        MatButtonModule,
+        MatMenuModule,
+    
     ]
 
 })

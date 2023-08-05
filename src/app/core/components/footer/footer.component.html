@@ -1,3 +1,49 @@
 <footer >
-    footer works!
+    <!-- <div class="footer-container">
+
+    </div> -->
+
+    <div class="container ">
+        <div class="row align-items-start">
+          <div class="col">
+           <img src="../assets/logos/storeLogoLogin.png" alt="" class="logo">
+
+           <div class="info">
+             <h3 class="info-head">Contact us</h3>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio totam nihil sed et voluptatibus reiciendis.</p>
+             <span>info@sanakin.com</span>
+             <span>+1 002 394</span>
+           </div>
+          </div>
+          <div class="col">
+            <h3 class="info-head">Pages</h3>
+            <ul>
+              <li *ngFor="let pageLink of pagesLinks">
+                <a [routerLink]="[pageLink.link]">{{pageLink.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 class="info-head">Categories</h3>
+            <ul>
+              <li *ngFor="let categorie of categoriesLinks">
+                <a [routerLink]="[categorie.link]">{{categorie.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 class="info-head">News Latter Subscription</h3>
+            
+            <p>Get the Latest Products & Best
+              Deals
+              in Your Inbox as First Person
+            </p>
+
+            <app-input-search
+              [placeholder]="inputPlaceholder"
+              [bgColor]="inputBgColor"
+            ></app-input-search>
+          </div>
+        </div>
+      </div>
 </footer>

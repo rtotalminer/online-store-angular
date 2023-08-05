@@ -1,5 +1,7 @@
+$orange: #FF9C00;
+
 footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -8,4 +10,38 @@ footer {
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
-  }
+
+
+    .col {
+      text-align: left;
+    }
+    .info {
+      text-align: left;
+    }
+    
+    .logo {
+      width: 314px;
+      margin-bottom: 20px;
+    }
+
+    .info-head {
+      color: $orange;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0 !important;
+
+      li {
+        text-align: left !important;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+   
+}

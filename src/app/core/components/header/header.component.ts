@@ -1,37 +1,41 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, 
+  inject, 
+  OnDestroy
+} from '@angular/core';
+
 import { Auth, User, user } from '@angular/fire/auth';
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs';
 
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+selector: 'app-header',
+templateUrl: './header.component.html',
+styleUrls: ['./header.component.scss'],
 })
 
-export class HeaderComponent {
-  private auth: Auth = inject(Auth);
-  userState: any
-  user$ = user(this.auth)
-  userSubscription: Subscription
+export class HeaderComponent implements OnDestroy {
+private userSubscribtion: Subscription
 
-  constructor
-  (
-   private firebaseService: FirebaseService
-  )
-  {
-    this.userSubscription = this.user$.subscribe((aUser: User | null) => {
-      this.userState = aUser
-    })
-  }
+public userState: User | null
+public loadCompleated: boolean = false
 
-  onLogout() {
-    this.firebaseService.logout()
-  }
+constructor
+(
+private firebaseService: FirebaseService
+)
+{
+this.userSubscribtion = this.firebaseService.user$.subscribe((aUser: User | null) => {
+this.userState = aUser
+})
+}
 
-  onConsole() {
-    console.log(this.userState)
-  }
+ngOnDestroy(): void {
+this.userSubscribtion.unsubscribe()
+}
+
+onLogout() {
+this.firebaseService.logout()
+}
 }
 
