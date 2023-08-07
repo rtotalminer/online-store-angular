@@ -5,10 +5,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { UserModule } from '../modules/user/user.module';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     // InputSearchComponent  
+  
+    ErrorComponent
   ],
   imports: [
 
