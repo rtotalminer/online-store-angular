@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { LoginPageComponent } from '../login-page/login.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { IAuth } from 'src/app/core/interfaces/auth.interface';
-import { IHttpError } from 'src/app/core/interfaces/http-error.interface';
+import { IAuth } from 'src/app/data/interfaces/auth.interface';
+import { IHttpError } from 'src/app/data/interfaces/http-error.interface';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 

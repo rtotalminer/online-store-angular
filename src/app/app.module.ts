@@ -11,9 +11,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 
 //environment
-import { environment } from 'src/environments/environment';
-
-
+import { environment } from 'src/config/enviroment';
 
 @NgModule({
   declarations: [

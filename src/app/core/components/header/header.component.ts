@@ -25,6 +25,7 @@ export class HeaderComponent implements OnDestroy {
    private firebaseService: FirebaseService
   )
   {
+    // Store this variable globally so it dosen't need time to subscribe.
     this.userSubscribtion = this.firebaseService.user$.subscribe((aUser: User | null) => {
       this.userState = aUser
     })

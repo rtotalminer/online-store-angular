@@ -7,8 +7,8 @@ import {
     user
 } from '@angular/fire/auth';
 
-import { IAuth } from '../core/interfaces/auth.interface';
-import { IHttpError } from '../core/interfaces/http-error.interface';
+import { IAuth } from '../data/interfaces/auth.interface';
+import { IHttpError } from '../data/interfaces/http-error.interface';
 
 
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -17,7 +17,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 
 export class FirebaseService {
-    private auth: Auth = inject(Auth);
+    public auth: Auth = inject(Auth);
     
     public user$ = user(this.auth);
 

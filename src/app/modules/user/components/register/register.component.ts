@@ -8,6 +8,9 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class RegisterComponent {
 
+    error?: string;
+    loading?: boolean = false;
+
 
   constructor(
     private firebaseService: FirebaseService

@@ -5,6 +5,7 @@ import { LoginPageComponent } from './components/login-page/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   ]},
 
   {path: 'register', component: RegisterComponent},
+  {path: 'resetPassword', component: ResetPasswordComponent},
   // {path: 'forgotPassword', component: ForgotPasswordComponent}
 
 ];

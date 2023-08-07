@@ -17,6 +17,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -25,7 +26,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
     LoginPageComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
