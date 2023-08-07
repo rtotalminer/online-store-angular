@@ -4,14 +4,12 @@ import {
     createUserWithEmailAndPassword , 
     signOut ,
     signInWithEmailAndPassword,
-    user
+    user,
+    verifyPasswordResetCode,
+    confirmPasswordReset
 } from '@angular/fire/auth';
 
 import { IAuth } from '../data/interfaces/auth.interface';
-import { IHttpError } from '../data/interfaces/http-error.interface';
-
-
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
@@ -59,4 +57,19 @@ export class FirebaseService {
         this.auth.signOut()
         console.log(this.auth)
     }
+
+    handleResetPassword(auth, actionCode, continueUrl, lang, newPassword) {
+        verifyPasswordResetCode(auth, actionCode).then((email) => {
+          const accountEmail = email;
+      
+          confirmPasswordReset(auth, actionCode, newPassword).then((resp) => {
+            return "success";
+          }).catch((error) => {
+                return "error";
+            }); 
+        }).catch((error) => {
+            return "error";
+        });
+    }
+
 }

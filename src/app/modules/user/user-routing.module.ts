@@ -11,12 +11,12 @@ const routes: Routes = [
 
   {path: 'login', component: LoginPageComponent, children: [
     { path: '', component: LoginFormComponent},
-    { path: 'forgotPassword', component: ForgotPasswordComponent}
+    { path: 'forgotPassword', component: ForgotPasswordComponent},
+    { path: 'resetPassword', component: ResetPasswordComponent},
   ]},
 
   {path: 'register', component: RegisterComponent},
-  {path: 'resetPassword', component: ResetPasswordComponent},
-  // {path: 'forgotPassword', component: ForgotPasswordComponent}
+  {path: 'resetPassword', component: ResetPasswordComponent}
 
 ];
 

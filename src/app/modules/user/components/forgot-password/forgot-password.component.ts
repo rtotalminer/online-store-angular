@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { data } from 'src/config/data';
+import { generateString } from 'src/helpers/generateRandomString';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -40,7 +42,8 @@ export class ForgotPasswordComponent {
   constructor(
     private loginPage: LoginPageComponent,
     private formBuilder: FormBuilder,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private storeService: StoreService,
     ){
   }
 
@@ -63,6 +66,9 @@ export class ForgotPasswordComponent {
     sendPasswordResetEmail(auth, email)
       .then(() => {
         this.emailSent = true;
+        // generate a uid based on the users email
+        // store this uid in the backend
+        // store this uid in the client
       })
       .catch((error) => {
         const errorCode = error.code;

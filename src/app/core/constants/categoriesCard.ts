@@ -1,5 +1,4 @@
-import { ICategoriesCard } from "../interfaces/categoriesCard.interface";
-
+import { ICategoriesCard } from "src/app/data/interfaces/categoriesCard.interface";
 
 export const categoriesCard: ICategoriesCard[] = [
     {
