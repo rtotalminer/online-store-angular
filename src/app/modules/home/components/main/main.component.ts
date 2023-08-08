@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { categoriesCard } from 'src/app/core/constants/categoriesCard';
-import { ICategoriesCard } from 'src/app/core/interfaces/categoriesCard.interface';
+import { ICategoriesCard } from 'src/app/data/interfaces/categoriesCard.interface';
 
 @Component({
   selector: 'app-main',

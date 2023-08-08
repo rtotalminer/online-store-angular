@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { LoginPageComponent } from '../login-page/login.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { IAuth } from 'src/app/core/interfaces/auth.interface';
-import { IHttpError } from 'src/app/core/interfaces/http-error.interface';
+import { IAuth } from 'src/app/data/interfaces/auth.interface';
+import { IHttpError } from 'src/app/data/interfaces/http-error.interface';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
@@ -37,10 +37,7 @@ export class LoginFormComponent {
       private loginPage: LoginPageComponent,
       private firebaseService: FirebaseService
     ) {
-      // redirect to home if already logged in
-      if (this.userService.userValue) {
-          this.router.navigate(['/']);
-      }
+
   }
 
   ngOnInit() {
@@ -48,69 +45,28 @@ export class LoginFormComponent {
           username: ['', Validators.required],
           password: ['', Validators.required]
       });
+      // redirect to home if already logged in
+      if (this.userService.userValue) {
+          this.router.navigate(['/']);
+      }
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  onSubmit() {
-      this.submitted = true;
-
-      // reset alert on submit
-      this.error = '';
-
-      // stop here if form is invalid
-      if (this.form.invalid) {
-        console.log(this.error);
-          return;
-      }
-
-      this.loading = true;
-      this.userService.login(this.f.username.value, this.f.password.value)
-          .pipe(first())
-          .subscribe({
-              next: () => {
-                  // get return url from query parameters or default to home page
-                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                  this.router.navigateByUrl(returnUrl);
-              },
-              error: error => {
-                  this.error = error;
-                  this.loading = false;
-              }
-          });
-  }
-
   onLogin(email: string, password: string) {
 
     this.submitted = true;
-
-    // stop here if form is invalid
-    // if (this.form.invalid) {
-    // console.log(this.error);
-    //     return;
-    // }
-
     this.loading = true;
 
     signInWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-            this.onSuccess()
-        })
-        .catch((error) => {
-            this.onError(error);
-        });
+    .then((userCredential) => {
+      this.loading = false;
+      this.router.navigateByUrl('/');
+    })
+    .catch((error) => {
+      this.loading = false;
+      this.error = error.message;
+    });
   }
-
-  private onSuccess() {
-    this.loading = false;
-    this.router.navigateByUrl('/');
-
-  }
-
-  private onError(error : any) {
-    this.loading = false;
-    console.log(error);
-  }
-
 }
