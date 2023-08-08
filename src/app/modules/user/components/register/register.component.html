@@ -13,7 +13,6 @@
         <a [routerLink]="['/']"><img src="../assets/logos/storeLogoLogin.png" alt="" width="280" height="70"></a>
     </div>
     <div class="container col-md-6 offset-md-3 card-padding pt-5">
-        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         <div>
             <div >
                 <h2 class="justify-content-center d-flex"><b>Sign Up</b></h2>
@@ -28,11 +27,12 @@
                         <input type="password" class="form-control" #passwordInput placeholder="Password"/>
                     </div>
                     <div class="mb-3">
-                        <input type="verify_password" class="form-control" #verifyPasswordInput placeholder="Verify Password"/>
+                        <input type="password" class="form-control" #verifyPasswordInput placeholder="Verify Password"/>
                     </div>
+                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
                     <div class="container">
                         <div class="row">
-                            <button (click)="onSubmit(emailInput.value, passwordInput.value)" [disabled]="loading" class="btn btn-primary">
+                            <button (click)="onSubmit(emailInput.value, passwordInput.value, verifyPasswordInput.value)" [disabled]="loading" class="btn btn-primary">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                                 Register
                             </button>
