@@ -24,23 +24,22 @@ export class FirebaseService {
     ) {
     }
 
+    // Not in use because I cannot bind then subscription outside of this service
     signUp({email, password}: IAuth) {
         createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential)
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
         });
     }
 
+    // Not in use because I cannot bind then subscription outside of this service
     signIn({email, password}: IAuth) {
         signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential)
-            return [userCredential];
+            return userCredential;
         })
         .catch((error) => {
             const errorCode : number = error.code;
@@ -55,21 +54,5 @@ export class FirebaseService {
 
     logout() {
         this.auth.signOut()
-        console.log(this.auth)
     }
-
-    handleResetPassword(auth, actionCode, continueUrl, lang, newPassword) {
-        verifyPasswordResetCode(auth, actionCode).then((email) => {
-          const accountEmail = email;
-      
-          confirmPasswordReset(auth, actionCode, newPassword).then((resp) => {
-            return "success";
-          }).catch((error) => {
-                return "error";
-            }); 
-        }).catch((error) => {
-            return "error";
-        });
-    }
-
 }

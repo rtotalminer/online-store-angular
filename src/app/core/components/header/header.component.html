@@ -30,7 +30,7 @@
             <a href="#menu"><mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon></a>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item>Cart</button>
-                <button mat-menu-item>Dashboard</button>
+                <button mat-menu-item [routerLink]="['dashboard']">Dashboard</button>
                 <button (click)="onLogout()" mat-menu-item>Log Out</button>
             </mat-menu>
         </div>
