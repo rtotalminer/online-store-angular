@@ -27,7 +27,7 @@
         </nav>
 
         <div *ngIf="userState">
-            <a href="#menu"><mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon></a>
+            <mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item>Cart</button>
                 <button mat-menu-item [routerLink]="['dashboard']">Dashboard</button>

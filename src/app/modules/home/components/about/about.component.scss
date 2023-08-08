@@ -1,0 +1,54 @@
+
+$orange: #FF9C00;
+
+.bannerPadding {
+    padding-top: 5em;
+    padding-bottom: 7em;
+}
+
+.storeInfo {
+    padding-bottom: 3em;
+
+    .storeStats {
+        padding-top: 4em;
+    }
+}
+
+.missionCards {
+    padding-bottom: 1em;
+}
+
+.subtextPadding {
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.shoppingImg {
+    border-radius: 2.5em;
+}
+
+.card {
+    border-radius: 1.5em;
+}
+
+.orangeText {
+    color: $orange;
+}
+
+.quoteMargin {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+.lessMarginBottom {
+    margin-bottom: 0em !important;
+}
+
+.indianMan {
+    width: 8em;
+    height: 6em;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
