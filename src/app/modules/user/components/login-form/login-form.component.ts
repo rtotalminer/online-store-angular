@@ -11,7 +11,6 @@ import { ForgotPasswordComponent } from '../forgot-password/forgot-password.comp
 import { LoginPageComponent } from '../login-page/login.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { IAuth } from 'src/app/data/interfaces/auth.interface';
-import { IHttpError } from 'src/app/data/interfaces/http-error.interface';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 

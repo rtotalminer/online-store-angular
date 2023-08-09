@@ -1,45 +1,57 @@
-<!-- <form >
-    <label for="name">Email:</label>
-    <input type="text" id="name" #emailInput>
 
-    <label for="password">Password:</label>
-    <input type="text" id="email" #passwordInput>
-
-    <button type="button" (click)="onSubmit(emailInput.value, passwordInput.value)">Submit</button>
-</form> -->
 
 <div class="container-fluid pt-3">
-    <div class="row-fluid d-flex justify-content-center">
+    <div class="row-fluid d-flex justify-content-center pb-5">
         <a [routerLink]="['/']"><img src="../assets/logos/storeLogoLogin.png" alt="" width="280" height="70"></a>
     </div>
-    <div class="container col-md-6 offset-md-3 card-padding pt-5">
-        <div>
-            <div >
-                <h2 class="justify-content-center d-flex"><b>Sign Up</b></h2>
-                <h6 class="justify-content-center d-flex pt-4">Sign up with an email address and a password</h6>
+    <div *ngIf="!success">
+        <div class="card-padding">
+            <div class="card container col-md-6 offset-md-3 pt-3">
+                <div >
+                    <h2 class="justify-content-center d-flex"><b>Sign Up</b></h2>
+                    <h6 class="justify-content-center d-flex pt-4">Sign up with an email address and a password</h6>
+                </div>
+                <div class="card-body pt-3">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" #emailInput placeholder="Email"/>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" #passwordInput placeholder="Password"/>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" #verifyPasswordInput placeholder="Verify Password"/>
+                        </div>
+                        <div *ngIf="errors">
+                            <div *ngFor="let error of errors">
+                                <div class="alert alert-danger">{{error}}</div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <button (click)="onSubmit(emailInput.value, passwordInput.value, verifyPasswordInput.value)" [disabled]="loading" class="btn btn-primary">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                    Register
+                                </button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>    
             </div>
-            <div class="card-body pt-3">
-                <form>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" #emailInput placeholder="Email"/>
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" #passwordInput placeholder="Password"/>
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" #verifyPasswordInput placeholder="Verify Password"/>
-                    </div>
-                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-                    <div class="container">
-                        <div class="row">
-                            <button (click)="onSubmit(emailInput.value, passwordInput.value, verifyPasswordInput.value)" [disabled]="loading" class="btn btn-primary">
-                                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                                Register
-                            </button>
-                        </div> 
-                    </div>
-                </form>
+        </div>
+    </div>
+    <div *ngIf="success">
+        <div class="justify-content-center d-flex pt-5">
+            <h2><b>Email Sent</b></h2>
+        </div>
+        <div class="card-body pt-3">
+            <div class="mb-3">
+                <div class="text-center" >
+                    <h6 class="pb-2">An account has been created, to have full use of our service please verify your email.</h6>
+                    <img class="transformCheckmark" src="./assets/images/green_checkmark.png">
+                </div>
             </div>
         </div>
     </div>
 </div>
+

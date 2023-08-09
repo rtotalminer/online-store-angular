@@ -1,4 +1,7 @@
 <header class="header_desktop" >
+    <div *ngIf="userState && !isVerified" class="verifyEmail text-black text-center pt-2 pb-2">
+        <a [routerLink]="['dashboard']" >Please Verify Your Email</a>
+    </div>
     <mat-toolbar class="d-flex">
             <div class="col">
                 <a [routerLink]="['/']">
@@ -13,7 +16,7 @@
                             <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
                         </li>
                         <li>
-                            <a class="paddingLeft" [routerLink]="['shopOnline']" routerLinkActive="active">Shop Online</a>
+                            <a class="hover-underline-animation paddingLeft" [routerLink]="['shopOnline']" routerLinkActive="active">Shop Online</a>
                         </li>
                         <li>
                             <a class="paddingLeft" [routerLink]="['whatsNew']" routerLinkActive="active">What's New</a>

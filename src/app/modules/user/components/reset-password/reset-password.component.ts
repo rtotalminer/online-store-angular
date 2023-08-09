@@ -33,18 +33,9 @@ export class ResetPasswordComponent {
   }
 
   ngOnInit() {
-      // Get params from URL
-      this.mode = getParameterByKey('mode');
       this.actionCode = getParameterByKey('oobCode');
       this.continueUrl = getParameterByKey('continueUrl');
       this.lang = getParameterByKey('lang') || 'en';
-
-      // Invalid Action Code
-      // TODO: Component briefly loads, we need to not allow this
-      verifyPasswordResetCode(this.firebaseService.auth, this.actionCode).then((email) => {})
-      .catch((error) => {
-        this.router.navigateByUrl('/');
-      });
 
       // Setup the form.
       this.form = this.formBuilder.group({
