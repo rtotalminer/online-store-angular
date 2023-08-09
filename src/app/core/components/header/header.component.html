@@ -29,7 +29,7 @@
             </div>
             
             <div class="col text-end">
-                <div *ngIf="user">
+                <div *ngIf="userState">
                     <mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Cart</button>
@@ -39,7 +39,7 @@
                 </div>
 
 
-                <div *ngIf="!user">
+                <div *ngIf="!userState">
                         <button [routerLink]="['register']" mat-raised-button >Sign up</button>
                         <button [routerLink]="['login']" mat-raised-button>Login</button>
                 </div>
