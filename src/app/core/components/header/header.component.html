@@ -29,19 +29,21 @@
             </div>
             
             <div class="col text-end">
-                <div *ngIf="userState">
-                    <mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Cart</button>
-                        <button mat-menu-item [routerLink]="['dashboard']">Dashboard</button>
-                        <button (click)="onLogout()" mat-menu-item>Log Out</button>
-                    </mat-menu>
-                </div>
+                <div *ngIf="showUserMenu">
+                    <div *ngIf="userState">
+                        <mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Cart</button>
+                            <button mat-menu-item [routerLink]="['dashboard']">Dashboard</button>
+                            <button (click)="onLogout()" mat-menu-item>Log Out</button>
+                        </mat-menu>
+                    </div>
 
 
-                <div *ngIf="!userState">
-                        <button [routerLink]="['register']" mat-raised-button >Sign up</button>
-                        <button [routerLink]="['login']" mat-raised-button>Login</button>
+                    <div *ngIf="!userState">
+                            <button [routerLink]="['register']" mat-raised-button >Sign up</button>
+                            <button [routerLink]="['login']" mat-raised-button>Login</button>
+                    </div>
                 </div>
             </div>
     </mat-toolbar>
