@@ -18,6 +18,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { InputSearchComponent } from 'src/app/core/components/input-search/input-search.component';
 import { TopCategorieCardComponent } from './components/main/top-categorie-card/top-categorie-card.component';
 
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
     declarations: [
         HomeComponent,
@@ -41,7 +43,7 @@ import { TopCategorieCardComponent } from './components/main/top-categorie-card/
         MatDialogModule,
 
         MatButtonModule,
-    
+        MatMenuModule
     ]
 
 })
