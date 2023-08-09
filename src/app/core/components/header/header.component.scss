@@ -83,3 +83,13 @@ span {
 .active {
     color: #FF9C00;
 }
+
+.verifyEmail {
+    background-color: #FF9C00;
+}
+
+
+mat-icon:hover{
+    color: $orangeColor;
+    transform: scale(1.4);
+}

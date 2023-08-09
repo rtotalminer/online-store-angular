@@ -15,35 +15,15 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class ForgotPasswordComponent {
 
-
   public emailSent = false;
-
-  // public otp = "";
-  // public showOtpComponent = true; 
-
+  public loading = false;
   error?: string;
-
   formEmail!: FormGroup;
-  submittedEmail = false;
+  submitted = false;
   
-  // formOTP!: FormGroup;
-
-  // @ViewChild("ngOtpInput", { static: false }) ngOtpInput: any;
-  // config = {
-  //   allowNumbersOnly: true,
-  //   length: 5,
-  //   isPasswordInput: false,
-  //   disableAutoFocus: false,
-  //   placeholder: "*",
-  //   inputStyles: { width: "50px", height: "50px", }
-  // }; 
-
-
   constructor(
-    private loginPage: LoginPageComponent,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
-    private storeService: StoreService,
     ){
   }
 
@@ -53,22 +33,16 @@ export class ForgotPasswordComponent {
     });
   }
 
-  public sendEmail() {
-    this.submittedEmail = true;
-
-    if (this.formEmail.invalid) {
-      return;
-    }
+  public sendEmail(emailInput: string) {
+    this.submitted = true;
+    this.error = "";
+    this.loading = true;
 
     const auth = this.firebaseService.auth;
-    const email = this.formEmail.controls.email.value;
 
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, emailInput)
       .then(() => {
         this.emailSent = true;
-        // generate a uid based on the users email
-        // store this uid in the backend
-        // store this uid in the client
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -77,11 +51,12 @@ export class ForgotPasswordComponent {
           this.emailSent = true;
         }
         else {
+          console.log(error)
           this.error = errorMessage;
+          this.loading = false;
         }
+        
       });
   }
 
-  // onOtpChange(otp: any) { this.otp = otp; // When all 4 digits are filled, trigger OTP validation method if (otp.length == 4) { this.validateOtp(); } } setVal(val) { this.ngOtpInput.setValue(val); } onConfigChange() { this.showOtpComponent = false; this.otp = null; setTimeout(() => { this.showOtpComponent = true; }, 0); } validateOtp() { // write your logic here to validate it, you can integrate sms API here if you want }
-  // }
 }

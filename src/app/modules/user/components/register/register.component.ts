@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { data } from 'src/config/data';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +11,9 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class RegisterComponent {
 
-  error?: string;
+  errors?: string[];
   loading?: boolean = false;
+  success?: boolean = false;
 
   constructor(
     private firebaseService: FirebaseService,
@@ -19,21 +21,29 @@ export class RegisterComponent {
   ) {}
 
   async onSubmit(email: string, password: string, verifyPassowrd: string) {
-    this.error = "";
+    this.errors = [];
     this.loading = true;
 
     if (password != verifyPassowrd) {
-      this.error = "Passwords do not match"
+      this.errors.push(data.PASSWORD_DOES_NOT_MATCH);
+      this.loading = false;
+      return;
     }
 
-    createUserWithEmailAndPassword(this.firebaseService.auth, email, password)
-    .then((userCredential) => {
-      this.loading = false;
-      this.router.navigateByUrl('/');
-    })
-    .catch((error) => {
-      this.loading = false;
-      this.error = error.message; 
-    });
+    await createUserWithEmailAndPassword(this.firebaseService.auth, email, password)
+      .then((user) => {
+        sendEmailVerification(this.firebaseService.auth.currentUser)
+          .then(() => {
+            this.success = true;
+          });
+      })
+      .catch((error) => {
+        this.errors.push(error.message); 
+      });
+
+
+
+    this.loading = false;
+
   }
 }

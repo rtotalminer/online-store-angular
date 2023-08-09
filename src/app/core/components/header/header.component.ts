@@ -9,39 +9,46 @@ import { Subscription } from 'rxjs';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
-selector: 'app-header',
-templateUrl: './header.component.html',
-styleUrls: ['./header.component.scss'],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
 
 export class HeaderComponent implements OnDestroy {
-private userSubscribtion: Subscription
+  private userSubscribtion: Subscription
 
-public userState: User | null;
-public showUserMenu: boolean;
+  public userState: User | null;
+  public showUserMenu: boolean;
+  public isVerified: any;
 
-constructor
-(
-private firebaseService: FirebaseService
-)
-{
+  constructor
+  (
+  private firebaseService: FirebaseService
+  )
+  {
 
-}
+  }
 
-ngOnInit() {
-this.showUserMenu = false;
-this.userSubscribtion = this.firebaseService.user$.subscribe((aUser: User | null) => {
-this.userState = aUser
-this.showUserMenu = true;
-})
-}
+  async ngOnInit() {
+    this.showUserMenu = false;
+    this.userSubscribtion = await this.firebaseService.user$.subscribe((aUser: User | null) => {
+      this.userState = aUser
+      this.showUserMenu = true;
+    })
+    this.isVerified = this.firebaseService.auth.currentUser.emailVerified;
+  }
 
-ngOnDestroy(): void {
-this.userSubscribtion.unsubscribe()
-}
+  ngOnDestroy(): void {
+    this.userSubscribtion.unsubscribe()
+  }
 
-onLogout() {
-this.firebaseService.logout()
-}
+  onLogout() {
+    this.firebaseService.logout()
+  }
+
+  verified() {
+    console.log()
+    
+  }
 }
 

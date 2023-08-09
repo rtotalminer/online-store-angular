@@ -18,6 +18,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { BrowserModule } from '@angular/platform-browser';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 
 
@@ -27,7 +29,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     RegisterComponent,
     ForgotPasswordComponent,
     LoginFormComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UserManagementComponent,
+    CreateAccountComponent
   ],
   imports: [
     CommonModule,
