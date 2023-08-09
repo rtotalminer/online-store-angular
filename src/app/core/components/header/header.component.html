@@ -1,57 +1,56 @@
 <header class="header_desktop" >
-    <mat-toolbar>
-        <a [routerLink]="['/']">
-            <img src="../assets/logos/storeLogo.png" alt="">
-        </a>
-        <!-- <span class="example-spacer"></span> -->
-        
-        <nav>
-            <ul>
-                <li>
-                    <a [routerLink]="['/']">Home</a>
-                </li>
-                <li>
-                    <a [routerLink]="['shopOnline']">Shop Online</a>
-                </li>
-                <li>
-                    <a [routerLink]="['whatsNew']">What's New</a>
-                </li>
-                <li>
-                    <a [routerLink]="['contact']">Contact</a>
-                </li>
-                <li>
-                    <a [routerLink]="['aboutus']">About us</a>
-                </li>
-            </ul>
-        </nav>
+    <mat-toolbar class="d-flex">
+            <div class="col">
+                <a [routerLink]="['/']">
+                    <img src="../assets/logos/storeLogo.png" alt="">
+                </a>
+            </div>
 
-        <div *ngIf="userState">
-            <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-                <mat-menu #menu="matMenu">
-                <button mat-menu-item>Item 1</button>
-                <button mat-menu-item>Item 2</button>
-                </mat-menu>
-            <a href="#"><mat-icon class="menuSize">menu</mat-icon></a>
-
-            <span (click)="onLogout()">Log out</span> -->
-
-            <a href="#menu"><mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon></a>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>Cart</button>
-                <button (click)="onLogout()" mat-menu-item>Log Out</button>
-            </mat-menu>
-
-
-
-        </div>
+            <div class="col navPadding">
+                <nav>
+                    <ul>
+                        <li>
+                            <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                        </li>
+                        <li>
+                            <a class="paddingLeft" [routerLink]="['shopOnline']" routerLinkActive="active">Shop Online</a>
+                        </li>
+                        <li>
+                            <a class="paddingLeft" [routerLink]="['whatsNew']" routerLinkActive="active">What's New</a>
+                        </li>
+                        <li>
+                            <a class="paddingLeft" [routerLink]="['contact']" routerLinkActive="active">Contact</a>
+                        </li>
+                        <li>
+                            <a class="paddingLeft" [routerLink]="['aboutus']" routerLinkActive="active">About us</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="col text-end">
+                <div *ngIf="showUserMenu">
+                    <div *ngIf="userState">
+                        <mat-icon class="cart">shopping_cart</mat-icon>
+                        <mat-icon [routerLink]="['dashboard']" class="dashboard">dashboard</mat-icon>
+                        <mat-icon (click)="onLogout()" class="logout">logout</mat-icon>
+                        <!-- <mat-icon [matMenuTriggerFor]="menu" class="menuSize">menu</mat-icon>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item [routerLink]="['dashboard']">Dashboard</button>
+                            <button (click)="onLogout()" mat-menu-item>Log Out</button>
+                        </mat-menu> -->
+                    </div>
 
 
-       <div *ngIf="!userState">
-            <button [routerLink]="['register']" mat-raised-button >Sign up</button>
-            <button [routerLink]="['login']" mat-raised-button>Login</button>
-       </div>
-
+                    <div *ngIf="!userState">
+                            <button [routerLink]="['register']" mat-raised-button >Sign up</button>
+                            <button [routerLink]="['login']" mat-raised-button>Login</button>
+                    </div>
+                </div>
+            </div>
     </mat-toolbar>
+    
+
 </header>
 
 <header class="header_mobile">

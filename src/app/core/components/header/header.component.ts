@@ -3,7 +3,7 @@ import { Component,
   OnDestroy
 } from '@angular/core';
 
-import { Auth, User, user } from '@angular/fire/auth';
+import { User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -17,16 +17,22 @@ styleUrls: ['./header.component.scss'],
 export class HeaderComponent implements OnDestroy {
 private userSubscribtion: Subscription
 
-public userState: User | null
-public loadCompleated: boolean = false
+public userState: User | null;
+public showUserMenu: boolean;
 
 constructor
 (
 private firebaseService: FirebaseService
 )
 {
+
+}
+
+ngOnInit() {
+this.showUserMenu = false;
 this.userSubscribtion = this.firebaseService.user$.subscribe((aUser: User | null) => {
 this.userState = aUser
+this.showUserMenu = true;
 })
 }
 

@@ -4,20 +4,18 @@ import {
     createUserWithEmailAndPassword , 
     signOut ,
     signInWithEmailAndPassword,
-    user
+    user,
+    verifyPasswordResetCode,
+    confirmPasswordReset
 } from '@angular/fire/auth';
 
-import { IAuth } from '../core/interfaces/auth.interface';
-import { IHttpError } from '../core/interfaces/http-error.interface';
-
-
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { IAuth } from '../data/interfaces/auth.interface';
 
 @Injectable({ providedIn: 'root' })
 
 
 export class FirebaseService {
-    private auth: Auth = inject(Auth);
+    public auth: Auth = inject(Auth);
     
     public user$ = user(this.auth);
 
@@ -26,23 +24,22 @@ export class FirebaseService {
     ) {
     }
 
+    // Not in use because I cannot bind then subscription outside of this service
     signUp({email, password}: IAuth) {
         createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential)
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
         });
     }
 
+    // Not in use because I cannot bind then subscription outside of this service
     signIn({email, password}: IAuth) {
         signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential)
-            return [userCredential];
+            return userCredential;
         })
         .catch((error) => {
             const errorCode : number = error.code;
@@ -57,6 +54,5 @@ export class FirebaseService {
 
     logout() {
         this.auth.signOut()
-        console.log(this.auth)
     }
 }
