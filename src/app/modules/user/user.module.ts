@@ -21,6 +21,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
   imports: [
     CommonModule,
     UserRoutingModule,
-
+    SharedModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

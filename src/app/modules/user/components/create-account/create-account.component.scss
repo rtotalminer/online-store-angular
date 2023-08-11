@@ -1,0 +1,22 @@
+
+.orange-background {
+    background-color:orange;
+}
+.white {
+    color:#ffffff;
+}
+
+.card {
+    border-radius: 1em;
+}
+
+.btn {
+    border-radius: .5em;
+    outline: none;
+}
+
+.btn:active {
+    background-color: darkorange;
+    outline: none;
+    color: white;
+}

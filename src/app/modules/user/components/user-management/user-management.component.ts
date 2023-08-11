@@ -14,6 +14,7 @@ export class UserManagementComponent {
 
   ngOnInit() {
     this.activeComponent = getParameterByKey('mode'); 
+    console.log(this.activeComponent)
   }
 
 }
