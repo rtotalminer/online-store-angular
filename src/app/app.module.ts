@@ -12,6 +12,8 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 
 //environment
 import { environment } from 'src/config/enviroment';
+import { ButtonComponent } from './shared/components/button/button.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [

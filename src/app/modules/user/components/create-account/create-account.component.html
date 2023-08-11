@@ -1,1 +1,77 @@
-<p>create-account works!</p>
+
+
+<div class="container-fluid pt-3">
+    <div class="row-fluid d-flex justify-content-center pb-5">
+        <a [routerLink]="['/']"><img src="../assets/logos/storeLogoLogin.png" alt="" width="280" height="70"></a>
+    </div>
+    <div *ngIf="!success">
+        <div class="card-padding">
+            <div class="card container col-md-6 offset-md-3 pt-3">
+                <div >
+                    <h2 class="justify-content-center d-flex">Your Profile</h2>
+                </div>
+                <div class="card-body pt-3">
+                    <form class="container">
+                        <h4>Basic Infomation</h4>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #firstName placeholder="First Name"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #lastName placeholder="Last Name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #birthday placeholder="Birthday (DD/MM/YYYY)"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #gender placeholder="Gender"/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" #phoneNumber placeholder="Phone Number"/>
+                        </div>
+                        <h4>Home Address</h4>
+                        <div class="row">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" #phoneNumber placeholder="Street Address"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #firstName placeholder="City"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" #lastName placeholder="Zip Code"/>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div *ngIf="errors">
+                                <div class="alert alert-danger" *ngFor="let error of errors">
+                                    <div>{{error}}</div>
+                                </div>
+                            </div>
+                            <div class="row d-flex text-center">
+                                <app-button (btnClick)="helloworld()" text="Continue" [loading]="loading"></app-button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div *ngIf="success">
+        <div class="justify-content-center d-flex pt-5">
+            <h2><b>Email Sent</b></h2>
+        </div>
+        <div class="card-body pt-3">
+            <div class="mb-3">
+                <div class="text-center" >
+                    <h6 class="pb-2">An account has been created, to have full use of our service please verify your email.</h6>
+                    <img class="transformCheckmark" src="./assets/images/green_checkmark.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

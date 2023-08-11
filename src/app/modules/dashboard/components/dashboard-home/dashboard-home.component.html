@@ -1,1 +1,5 @@
 <p>dashboard-home works!</p>
+
+<button *ngIf="!isVerified && user" (click)="resendEmailVerification">
+    Resend Email Verification
+</button>
