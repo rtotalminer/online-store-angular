@@ -26,6 +26,7 @@ export class CreateAccountComponent {
     await new Promise(r => setTimeout(r, 2000));
 
     this.loading = false;
+    this.success = true;
 
   }
 }
