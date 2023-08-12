@@ -46,7 +46,6 @@ export class CreateAccountComponent {
     }).then(() => {
         this.loading = false;
         this.success = true;
-        this.storeService.addData("userVerified", true)
       }).catch((error) => {
     });
 
