@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { User, sendPasswordResetEmail } from '@angular/fire/auth';
+import { User, sendEmailVerification, sendPasswordResetEmail } from '@angular/fire/auth';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -36,14 +36,13 @@ export class DashboardHomeComponent {
   resendEmailVerification() {
     const auth = this.firebaseService.auth;
 
-    sendPasswordResetEmail(auth, this.user.email)
+    sendEmailVerification(this.firebaseService.auth.currentUser)
       .then(() => {
         this.emailSent = true;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error)
       });
   }
 }

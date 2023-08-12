@@ -35,6 +35,8 @@ export class HeaderComponent implements OnDestroy {
       if (aUser != undefined) {
         this.userState = aUser;
         this.isVerified = aUser.emailVerified;
+
+        console.log(this.isVerified);
       }
       else {
         this.userState = null;
