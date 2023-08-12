@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+import { applyActionCode, checkActionCode } from '@angular/fire/auth';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { StoreService } from 'src/app/services/store.service';
+
+import { getParameterByKey } from 'src/helpers/getParameterByName';
+
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -10,11 +16,22 @@ export class CreateAccountComponent {
   public loading = false;
   public errors: string[];
 
-  constructor() {
+  public actionCode: string;
+  public continueUrl: string;
+  public lang: string;
+
+  constructor(
+    private firebaseService: FirebaseService,
+    private storeService: StoreService
+    )
+  {
 
   }
 
   ngOnInit() {
+    this.actionCode = getParameterByKey('oobCode');
+    this.continueUrl = getParameterByKey('continueUrl');
+    this.lang = getParameterByKey('lang') || 'en';
   }
 
   async helloworld() {
@@ -22,11 +39,16 @@ export class CreateAccountComponent {
       this.loading = true;
     }
 
-    console.log("DO STUFF")
-    await new Promise(r => setTimeout(r, 2000));
-
-    this.loading = false;
-    this.success = true;
+    let restoredEmail = null;
+    await checkActionCode(this.firebaseService.auth, this.actionCode).then((info) => {
+      restoredEmail = info['data']['email'];
+      return applyActionCode(this.firebaseService.auth, this.actionCode);
+    }).then(() => {
+        this.loading = false;
+        this.success = true;
+        this.storeService.addData("userVerified", true)
+      }).catch((error) => {
+    });
 
   }
 }

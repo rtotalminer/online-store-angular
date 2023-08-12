@@ -20,7 +20,6 @@ export class StoreService {
        return this.dataStore.get(key);
     }
     return undefined;
-    
   }
 
   clearData(key: string) {

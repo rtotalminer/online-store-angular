@@ -1,5 +1,5 @@
 <header class="header_desktop" >
-    <div *ngIf="userState && !isVerified" class="verifyEmail text-black text-center pt-2 pb-2">
+    <div *ngIf="userState && !isVerified && showUserMenu" class="verifyEmail text-black text-center pt-2 pb-2">
         <a [routerLink]="['dashboard']" >Please Verify Your Email</a>
     </div>
     <mat-toolbar class="d-flex">
