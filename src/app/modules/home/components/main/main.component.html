@@ -2,16 +2,32 @@
 <div class="container pt-3">
         
     <div class="row">
-        <img src="../assets/images/banner.jpg" alt="">
+        <img src="../assets/images/banner.jpg" alt="" class="banner">
+
+        <div class="row-info">
+            <h1>Find the Best Products <span class="transfer">with <span class="c-orange">Reliability</span> </span></h1>
+            <app-input-search [placeholder]="InputPlaceholder" ></app-input-search>
+        </div>
     </div>
     
 <div class="info">
     <h1>Shop our top Categories</h1>
     
-    <div class="categories-cards">
-        <app-top-categorie-card 
+    <div class="d-flex">
+        <app-top-categorie-card
             *ngFor="let card of topCategoriesCards"
             [card]="card"
         ></app-top-categorie-card>
+    </div>
+</div>
+
+<div class="info">
+    <h1>Best Deals For You!</h1>
+
+    <div class="d-flex">
+        <app-product-card-item
+            *ngFor="let BestDealsProduct of BestDealsProducts"
+            [product]="BestDealsProduct"
+        ></app-product-card-item>
     </div>
 </div>

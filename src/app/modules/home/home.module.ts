@@ -18,6 +18,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { InputSearchComponent } from 'src/app/core/components/input-search/input-search.component';
 import { TopCategorieCardComponent } from './components/main/top-categorie-card/top-categorie-card.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ProductCardItemComponent } from './components/main/product-card-item/product-card-item.component';
 
 
 
@@ -32,7 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
         WhatsNewComponent,
         ContactComponent,
         InputSearchComponent,
-        TopCategorieCardComponent
+        TopCategorieCardComponent,
+        ProductCardItemComponent
     ],
     imports: [
         CommonModule,

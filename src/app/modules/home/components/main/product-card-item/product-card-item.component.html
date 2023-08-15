@@ -1,0 +1,12 @@
+<div class="card-item">
+    <img src="{{[product.image]}}" alt="">
+
+    <div class="product-info">
+        <div class="product-name">{{product.title}}</div>
+        <div class="product-price">${{product.price}}</div>
+    </div>
+
+    <p>{{product.description | slice:0:150}}...</p>
+
+    <button>Add to cart</button>
+</div>  

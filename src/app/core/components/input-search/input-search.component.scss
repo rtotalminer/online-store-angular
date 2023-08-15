@@ -1,16 +1,23 @@
 $borderRadius: 20px;
 
 .div-rel {
+    width: 400px;
     position: relative;
 
     input {
         border-radius: $borderRadius;
         border: none;
-        outline: none;
         width: 100%;
+        outline: none;
         padding: 9px 19px;
         color: white;
+        background: #00000048;
+
+        &::placeholder {
+            color: white;
+        }
     }
+
 
     button {
         position: absolute;
