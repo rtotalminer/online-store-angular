@@ -21,6 +21,8 @@ export class CreateAccountComponent {
   public continueUrl: string;
   public lang: string;
 
+  private userSubscription: any;
+
   constructor(
     private firebaseService: FirebaseService,
     private storeService: StoreService,
@@ -46,13 +48,16 @@ export class CreateAccountComponent {
       restoredEmail = info['data']['email'];
       applyActionCode(this.firebaseService.auth, this.actionCode);
     }).then(() => {
-        return this.firebaseService.user$.subscribe((aUser: User | null) => {
+        return this.userSubscription = this.firebaseService.user$.subscribe((aUser: User | null) => {
           aUser.reload();
           this.loading = false;
           this.success = true;
         });
       }).catch((error) => {
     });
-    
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 }
