@@ -31,19 +31,18 @@ export class HeaderComponent implements OnDestroy {
 
   async ngOnInit() {
     this.showUserMenu = false;
+    this.isVerified = false;
     this.userSubscribtion = await this.firebaseService.user$.subscribe((aUser: User | null) => {
       if (aUser != undefined) {
         this.userState = aUser;
         this.isVerified = aUser.emailVerified;
-
-        console.log(this.isVerified);
       }
       else {
         this.userState = null;
-        this.isVerified = false;
       }
       this.showUserMenu = true;
     });
+
   }
 
   ngOnDestroy(): void {
