@@ -40,10 +40,6 @@ export class RegisterComponent {
       .catch((error) => {
         this.errors.push(error.message); 
       });
-
-
-
     this.loading = false;
-
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { applyActionCode, checkActionCode } from '@angular/fire/auth';
+import { User, applyActionCode, checkActionCode } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -22,7 +23,8 @@ export class CreateAccountComponent {
 
   constructor(
     private firebaseService: FirebaseService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private router: Router,
     )
   {
 
@@ -42,12 +44,15 @@ export class CreateAccountComponent {
     let restoredEmail = null;
     await checkActionCode(this.firebaseService.auth, this.actionCode).then((info) => {
       restoredEmail = info['data']['email'];
-      return applyActionCode(this.firebaseService.auth, this.actionCode);
+      applyActionCode(this.firebaseService.auth, this.actionCode);
     }).then(() => {
-        this.loading = false;
-        this.success = true;
+        return this.firebaseService.user$.subscribe((aUser: User | null) => {
+          aUser.reload();
+          this.loading = false;
+          this.success = true;
+        });
       }).catch((error) => {
     });
-
+    
   }
 }
